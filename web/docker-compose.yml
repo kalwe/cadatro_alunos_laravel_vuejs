@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  web:
+    container_name: cadastro_alunos_laravel_vuejs
+    build: ./
+    volumes:
+      - ../web:/web
+    working_dir: /web
+    ports:
+      - 8080:8080
+    command: ['yarn', 'dev']
+
