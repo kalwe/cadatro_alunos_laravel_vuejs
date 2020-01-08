@@ -1,0 +1,26 @@
+version: '3.3'
+
+volumes:
+  data:
+
+services:
+  web:
+    container_name: cadastro-alunos-web
+    build: ./web
+    volumes:
+      - ./web:/web
+    working_dir: /web
+    ports:
+      - 8080:8080
+    command: ['yarn', 'dev']
+
+  db:
+    container_name: cadastro-alunos-db
+    image: mysql:5.6
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=app_development

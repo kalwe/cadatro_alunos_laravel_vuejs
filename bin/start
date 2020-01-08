@@ -1,0 +1,8 @@
+#/bin/sh
+if [ -f "$1" ]; then
+  docker-compose -f $1 up
+else
+  if [ -f "./docker-compose.yml" ]; then
+    docker-compose up
+  fi
+fi

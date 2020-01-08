@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/aluno/cadastro">Gerenciamento de Alunos</router-link>
+      <router-link to="/gerenciarAlunos">Gerenciamento de Alunos</router-link> |
+      <router-link to="/gerenciarCursos">Gerenciamento de Cursos</router-link> |
+      <router-link to="/matriculas">Matrícula</router-link>
     </div>
     <router-view/>
   </div>
