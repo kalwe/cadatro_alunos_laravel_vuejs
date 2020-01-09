@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Repositories\CursoRepository;
 use Illuminate\Http\Request;
-// use App\Models\Curso;
 
 class CursosController extends Controller
 {
-    // private $curso;
     private $cursoRepository;
 
     public function __construct(CursoRepository $cursoRepository) {

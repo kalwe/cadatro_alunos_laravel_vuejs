@@ -14,6 +14,5 @@ laravel new api
 ## Startando o projeto
 ```
 execute no terminal:
-chmod +x ./install (apenas na primeira vez)
-./bin/start
+docker-compose up && php artisan serve
 ```

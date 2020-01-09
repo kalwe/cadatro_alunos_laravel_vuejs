@@ -34,7 +34,7 @@ class AlunosController extends Controller
     {
         $result = $this->alunoRepository->update($id, $req->all());
         return response()->json($result);
-    }
+    }Disposição
 
     public function delete($id)
     {
