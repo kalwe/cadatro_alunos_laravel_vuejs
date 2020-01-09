@@ -14,16 +14,26 @@ const routes = [
       name: 'alunoCadastro',
       component: () => import('../views/alunos/CadastroAluno.vue')
     },
-  // {
-  //   path: '/gerenciarCursos',
-  //   name: 'gerenciarCursos',
-  //   component: () => import('../views/cursos/GerenciarCursos.vue')
-  // },
-  //   {
-  //     path: '/cursos/cadastro',
-  //     name: 'cursoCadastro',
-  //     component: () => import('../views/alunos/CadastroCurso.vue')
-  //   },
+    {
+      path: '/aluno/atualizar/:id',
+      name: 'alunoAtualizar',
+      component: () => import('../views/alunos/AtualizarAluno.vue')
+    },
+  {
+    path: '/gerenciarCursos',
+    name: 'gerenciarCursos',
+    component: () => import('../views/cursos/GerenciarCursos.vue')
+  },
+    {
+      path: '/curso/cadastro',
+      name: 'cursoCadastro',
+      component: () => import('../views/cursos/CadastroCurso.vue')
+    },
+    {
+      path: '/curso/atualizar/:id',
+      name: 'cursoAtualizar',
+      component: () => import('../views/cursos/AtualizarCurso.vue')
+    },
 ]
 
 const router = new VueRouter({

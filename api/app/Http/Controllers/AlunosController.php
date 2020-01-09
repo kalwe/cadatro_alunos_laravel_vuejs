@@ -3,47 +3,42 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Aluno;
+use App\Repositories\AlunoRepository;
 
 class AlunosController extends Controller
 {
-    private $aluno;
+    private $alunoRepository;
 
-    public function __construct(Aluno $aluno) {
-        $this->aluno = $aluno;
+    public function __construct(AlunoRepository $alunoRepository) {
+        $this->alunoRepository = $alunoRepository;
     }
 
     public function create(Request $req)
     {
-        $aluno = $this->aluno->create($req->all());
+        $aluno = $this->alunoRepository->save($req->all());
         return response()->json($aluno);
     }
 
     public function list()
     {
-        $data = $this->aluno->all();
-        return response()->json($data);
+        return response()->json($this->alunoRepository->listAll());
     }
 
     public function find($id)
     {
-        $data = $this->aluno::findOrFail($id);
+        $data = $this->alunoRepository->findById($id);
         return response()->json($data);
     }
 
     public function update($id, Request $req)
     {
-        $aluno = $this->aluno->findOrFail($id);
-        $result = $aluno->update($req->all());
-
+        $result = $this->alunoRepository->update($id, $req->all());
         return response()->json($result);
     }
 
     public function delete($id)
     {
-        $aluno = $this->aluno->findOrFail($id);
-        $aluno->delete();
-
-        return response()->json(true);
+        $this->alunoRepository->delete($id);
+        return response()->json(true, 204);
     }
 }

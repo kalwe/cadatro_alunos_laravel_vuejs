@@ -22,7 +22,7 @@ export default {
   },
 
   atualizar: (aluno) => {
-    const url = `/api/aluno/${aluno.id}`;
+    const url = `/aluno/${aluno.id}`;
     return http
           .put(
             url,

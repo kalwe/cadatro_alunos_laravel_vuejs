@@ -1,32 +1,32 @@
 <template>
 <div>
-  <h1>Alunos</h1>
+  <h1>Cursos</h1>
   <table class="table table-bordered table-hover">
   <thead>
   <tr>
     <th>#</th>
-    <th>CPF</th>
-    <th>RG</th>
-    <th>Data de Nascimento</th>
     <th>Nome</th>
-    <th>Telefone</th>
+    <th>Valor Mensalidade</th>
+    <th>Valor Matrícula</th>
+    <th>Período</th>
+    <th>Meses de Duração</th>
     <th>
-      <router-link to="/aluno/cadastro" class="btn btn-success">Cadastrar</router-link>
+      <router-link to="/curso/cadastro" class="btn btn-success">Cadastrar</router-link>
     </th>
   </tr>
   </thead>
   <tbody>
-  <tr v-for="(aluno, index) in alunos" v-bind:key="index">
-    <th>{{ aluno.id }}</th>
-    <th>{{ aluno.cpf }}</th>
-    <td>{{ aluno.rg }}</td>
-    <td>{{ aluno.data_nascimento }} </td>
-    <td>{{ aluno.nome }}</td>
-    <td>{{ aluno.telefone }}</td>
+  <tr v-for="(curso, index) in cursos" v-bind:key="index">
+    <th>{{ curso.id }}</th>
+    <th>{{ curso.nome }}</th>
+    <td>{{ curso.valor_mensalidade }}</td>
+    <td>{{ curso.valor_matricula }} </td>
+    <td>{{ curso.periodo }}</td>
+    <td>{{ curso.meses_duracao }}</td>
     <td>
     <div class="btn-group">
-      <router-link :to="'/aluno/atualizar/' + aluno.id" class="btn btn-primary btn-router-link">Editar</router-link>
-      <b-button class="btn btn-danger" @click="deletarAluno(aluno)" v-b-modal.modal-excluir-aluno>X</b-button>
+      <router-link :to="'/curso/atualizar/' + curso.id" class="btn btn-primary btn-router-link">Editar</router-link>
+      <b-button class="btn btn-danger" @click="deletarCurso(curso)" v-b-modal.modal-excluir-curso>X</b-button>
     </div>
     </td>
   </tr>
@@ -34,13 +34,13 @@
   </table>
 
   <div>
-  <b-modal id="modal-excluir-aluno" title="">
+  <b-modal id="modal-excluir-curso" title="">
     <div class="d-block text-center">
-      <h3>Aluno deletado com sucesso!</h3>
+      <h3>curso deletado com sucesso!</h3>
     </div>
 
     <template v-slot:modal-footer="{ hideModal }">
-      <b-button size="sm" variant="success" @click="$refs.hideModal()">
+      <b-button size="sm" variant="success" @click="this.hide()">
         Ok
       </b-button>
     </template>
@@ -52,43 +52,41 @@
 </template>
 
 <script>
-import Alunos from '@/services/alunos'
-// import Gerenciador from '@/components/Gerenciador.vue'
+import Cursos from '@/services/cursos'
 import { BModal } from 'bootstrap-vue'
 
 export default {
-  name: 'buscarAluno',
+  name: 'buscarCurso',
   components: {
-    // Gerenciador
     BModal
   },
   data() {
     return {
-      alunos: [],
+      cursos: [],
     }
   },
   mounted() {
-    Alunos.listar()
+    Cursos.listar()
       .then(response => {
-        this.alunos = response.data
+        this.cursos = response.data
       })
-      .catch(err => console.log('GerenciarAlunos.vue - error: ' + err))
+      .catch(err => console.log('GerenciarCursos.vue - error: ' + err))
   },
   methods: {
-    listarAlunos: () => {
-      Alunos.listar()
+    listarcursos: () => {
+      Cursos.listar()
         .then((response) => {
-          self.alunos = response.data
+          self.cursos = response.data
         })
     },
 
-    deletarAluno(aluno) {
-      Alunos.deletar(aluno)
-      location.reload()
+    deletarCurso(curso) {
+      Cursos.deletar(curso)
+      // location.reload()
     },
 
     hideModal() {
-      this.$refs['modal-excluir-aluno'].hide()
+      this.$refs['modal-excluir-curso'].hide()
     },
   }
 }
@@ -144,5 +142,4 @@ button {
   height: 38px;
   top: 5px;
 }
-
 </style>
