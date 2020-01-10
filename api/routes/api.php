@@ -19,7 +19,7 @@ Route::group(['middleware' => ['cors'], 'prefix' => 'cursos'], function()
 {
     Route::get('/', 'CursosController@list')->name('cursos');
     Route::get('/{id}', 'CursosController@find')->name('cursos.find');
-    Route::post('/', 'CursosController@create')->name('cursos.create');
+    Route::post('/', 'CursosController@create')->name('cursos.creater');
     Route::put('/{cursos}', 'CursosController@update')->name('cursos.update');
     Route::delete('/{aluno}', 'CursosController@delete')->name('cursos.delete');
 });

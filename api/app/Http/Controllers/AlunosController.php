@@ -16,7 +16,7 @@ class AlunosController extends Controller
     public function create(Request $req)
     {
         $aluno = $this->alunoRepository->save($req->all());
-        return response()->json($aluno);
+        return response()->json($aluno, 201);
     }
 
     public function list()

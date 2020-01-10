@@ -4,10 +4,10 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Curso::class, function (Faker $faker) {
     return [
-        'nome' => $faker->sentence,
-        'valor_mensalidade' => $faker->sentence,
-        'valor_matricula' => $faker->sentence,
-        'periodo' => $faker->sentence,
-        'meses_duracao' => $faker->sentence,
+        'nome' => $faker->name,
+        'valor_mensalidade' => $faker->randomNumber(8),
+        'valor_matricula' => $faker->randomNumber(8),
+        'periodo' => $faker->numberBetween(1, 3),
+        'meses_duracao' => $faker->randomNumber(),
     ];
 });
