@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Aluno;
 
-class AlunoRepository {
+class AlunoRepository implements IAlunoRepository{
 
     public function save($aluno)
     {
