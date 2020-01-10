@@ -4,8 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Curso;
 
-class CursoRepository {
-
+class CursoRepository implements ICursoRepository
+{
     public function save($curso)
     {
         return Curso::create($curso);

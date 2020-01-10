@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\AlunoRepository;
+use App\Repositories\IAlunoRepository;
 
 class AlunosController extends Controller
 {
     private $alunoRepository;
 
-    public function __construct(AlunoRepository $alunoRepository) {
+    public function __construct(IAlunoRepository $alunoRepository) {
         $this->alunoRepository = $alunoRepository;
     }
 
@@ -34,7 +34,7 @@ class AlunosController extends Controller
     {
         $result = $this->alunoRepository->update($id, $req->all());
         return response()->json($result);
-    }Disposição
+    }
 
     public function delete($id)
     {
